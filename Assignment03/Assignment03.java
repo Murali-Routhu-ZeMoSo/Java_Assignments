@@ -3,15 +3,13 @@ package com.codewithmurali;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 public class Assignment03 {
-    public static void runCommand(String command)  {
-        String responseLine="";
+    public static void runCommand(String command )  {
+        String responseLine;
         ArrayList<Float> durationArray= new ArrayList<>();
         try{
             Process ping = Runtime.getRuntime().exec(command);
@@ -26,7 +24,14 @@ public class Assignment03 {
                 }
             }
             Collections.sort(durationArray);
-            System.out.println(durationArray);
+            if(!durationArray.isEmpty()){
+
+                System.out.println(durationArray);
+            }
+            else{
+                System.out.println("enter a correct domain name or address");
+                    return ;
+            }
             int midIndex = durationArray.size()/2;
             if(durationArray.size()%2==0){
                 System.out.println("the median is:"+ (durationArray.get(midIndex)+durationArray.get(midIndex-1))/2);
@@ -37,12 +42,10 @@ public class Assignment03 {
             }
 
 
-        }catch (IOException io){
-            System.out.println(io.getMessage());
+        }catch (NullPointerException | SecurityException | IOException exception){
+            System.out.println(exception.getMessage());
         }
-        catch (SecurityException se){
-            System.out.println(se.getMessage());
-        }
+
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -56,3 +59,4 @@ public class Assignment03 {
 
     }
 }
+
