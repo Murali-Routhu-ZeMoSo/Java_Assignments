@@ -45,33 +45,4 @@ No range
 06-04-2001 01-01-2001
 
 
- while(inputCount-->0)
-        {
-            String date1=scan.next();
-            String date2=scan.next();
-            Date signupDate=new SimpleDateFormat("dd-MM-yyyy").parse(date1);
-            Date currDate=new SimpleDateFormat("dd-MM-yyyy").parse(date2);
-            if(currDate.compareTo(signupDate)>0)
-            {
-                Date start,end,cal;
-                cal=signupDate;
-                cal.setYear(currDate.getYear());
-                Calendar calendar=Calendar.getInstance();
-                calendar.setTime(cal);
-                calendar.add(Calendar.DATE, 30);
-                end=calendar.getTime();
-                calendar.add(Calendar.DATE,-60);
-                start=calendar.getTime();
 
-                if(end.compareTo(currDate)>0)
-                    end=currDate;
-                SimpleDateFormat print=new SimpleDateFormat("dd-MM-yyyy");
-
-                System.out.println(print.format(start)+"  "+print.format(end));
-
-            }
-            else
-            {
-                System.out.println("No range");
-            }
-        }
